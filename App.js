@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import LoadingOverlay from "./src/components/ui/LoadingOverlay";
 import Navigation from "./src/navigation/Navigation";
 import AuthContextProvider from "./src/context/context";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -14,11 +15,13 @@ export default function App() {
   }
   return (
     <>
-      <AuthContextProvider>
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-      </AuthContextProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <AuthContextProvider>
+          <NavigationContainer>
+            <Navigation />
+          </NavigationContainer>
+        </AuthContextProvider>
+      </GestureHandlerRootView>
     </>
   );
 }

@@ -1,19 +1,15 @@
-import { Pressable, Text, View } from "react-native";
-import { AuthContext } from "../context/context";
-import { useContext } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ChoosingScreen from "../screens/ChoosingScreen";
+
+const Stack = createNativeStackNavigator();
 
 function GameStack() {
-  const authCtx = useContext(AuthContext);
+  const { Navigator, Screen } = Stack;
+
   return (
-    <View>
-      <Text>game</Text>
-      <Pressable
-        style={{ padding: 30 }}
-        onPress={() => authCtx.clearNameAndToken()}
-      >
-        <Text>logout</Text>
-      </Pressable>
-    </View>
+    <Navigator screenOptions={{ headerShown: false }}>
+      <Screen name="Choosing" component={ChoosingScreen} />
+    </Navigator>
   );
 }
 
