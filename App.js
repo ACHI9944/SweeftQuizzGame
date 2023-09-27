@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import LoadingOverlay from "./src/components/ui/LoadingOverlay";
+import Navigation from "./src/navigation/Navigation";
+import AuthContextProvider from "./src/context/context";
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Main: require("./src/assets/fonts/BonaNova-Regular.ttf"),
+    Helper: require("./src/assets/fonts/Lora-Regular.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <LoadingOverlay />;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <AuthContextProvider>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </AuthContextProvider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
