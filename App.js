@@ -15,13 +15,11 @@ export default function App() {
   }
   return (
     <>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <AuthContextProvider>
-          <NavigationContainer>
-            <Navigation />
-          </NavigationContainer>
-        </AuthContextProvider>
-      </GestureHandlerRootView>
+      <AuthContextProvider>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </AuthContextProvider>
     </>
   );
 }

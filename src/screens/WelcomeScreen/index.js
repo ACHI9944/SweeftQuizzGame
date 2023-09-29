@@ -45,6 +45,7 @@ function WelcomeScreen() {
           placeholder="Name . . ."
           onChangeText={(value) => setName(value)}
           value={name}
+          maxLength={17}
         />
       </View>
       <CustomButton

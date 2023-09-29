@@ -9,6 +9,7 @@ import TypesModal from "../../components/TypesModal";
 import CustomButton from "../../components/ui/CustomButton";
 import ConfirmModal from "../../components/ConfirmModal";
 import ChoosingScreenStyle from "./style";
+import { Keyboard } from "react-native";
 
 function isValidNum(value) {
   return value > 0 && value < 51;
@@ -31,6 +32,7 @@ function ChoosingScreen({ navigation }) {
 
   //function for opening and closing select modalize
   function refHandler(ref, action) {
+    Keyboard.dismiss();
     if (action === "open") {
       ref.current?.open();
     } else ref.current?.close();
@@ -72,6 +74,7 @@ function ChoosingScreen({ navigation }) {
           <Text style={styles.numberDescription}>
             Number of Questions 1 - 50:
           </Text>
+
           <View
             style={[
               styles.numberView,
@@ -86,6 +89,7 @@ function ChoosingScreen({ navigation }) {
               onChangeText={(value) => setAmount(value)}
               value={amount}
               onBlur={() => setIsTouched(true)}
+              maxLength={2}
             />
           </View>
 
