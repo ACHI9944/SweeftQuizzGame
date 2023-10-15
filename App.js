@@ -17,7 +17,9 @@ export default function App() {
     <>
       <AuthContextProvider>
         <NavigationContainer>
-          <Navigation />
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <Navigation />
+          </GestureHandlerRootView>
         </NavigationContainer>
       </AuthContextProvider>
     </>
